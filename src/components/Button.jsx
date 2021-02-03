@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import classNames from "classnames";
 
 function Button({onClick, className, outline, children} /* props */) {
@@ -38,4 +39,7 @@ class Button extends React.Component {
 }
  */
 
+Button.propTypes = {
+   onClick: PropTypes.func,
+ }
 export default Button;
