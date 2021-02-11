@@ -1,40 +1,50 @@
 // import Button from "./Button";
 import React from "react";
-import axios from 'axios'
-import { connect } from 'react-redux'
+import axios from "axios";
+// import { connect } from 'react-redux'
+import { /* useSelector, */ useDispatch } from "react-redux";
 // import store from './redux/store'
 
 import { Route } from "react-router-dom";
 import { Header } from "./components";
 import { Home, Cart } from "./pages";
-import { setPizzas as setPizzasAction } from './redux/action/pizzas'
+import { fetchPizzas } from "./redux/action/pizzas";
 
-// function App() {
 
-//   // const [pizzas, setPizzas] = React.useState([]);
 
-//   React.useEffect(() => {
-//     axios.get("http://localhost:3000/db.json").then(({ data }) => {
-//       setPizzas(data.pizzas);
-//     })
-//     // fetch("http://localhost:3000/db.json")
-//     //   .then((resp) => resp.json())
-//     //   .then((json) => {
-//     //     setPizzas(json.pizzas);
-//     //   });
-//   }, []);
+function App() {
+  // const [pizzas, setPizzas] = React.useState([]);
+  const dispatch = useDispatch();
+  /* const { items }= useSelector(({ pizzas }) => {
+    return {
+      items: pizzas.items,
+    }
+  }) */
 
-//   return (
-//     <div className="wrapper">
-//       <Header />
-//       <div className="content">
-//         <Route path="/" render={() => <Home items={pizzas}/>} exact />
-//         <Route path="/cart" component={Cart} exact />
-//       </div>
-//     </div>
-//   );
-// }
+  React.useEffect(() => {
+    // fetchPizzas(dispatch)
+    dispatch(fetchPizzas())
+    // fetch("http://localhost:3000/db.json")
+    //   .then((resp) => resp.json())
+    //   .then((json) => {
+    //     setPizzas(json.pizzas);
+    //   });
+  }, []);
 
+  return (
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        {/* <Route path="/" render={() => <Home items={items} />} exact /> */}
+        <Route path="/" component={Home} exact />
+        <Route path="/cart" component={Cart} exact />
+      </div>
+    </div>
+  );
+}
+
+export default App;
+/*
 class App extends React.Component {
   componentDidMount() {
       axios.get("http://localhost:3000/db.json").then(({ data }) => {
@@ -74,3 +84,4 @@ const mapDispatchToProps = {
 // }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+*/

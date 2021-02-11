@@ -1,10 +1,12 @@
 //rfce
 import React from "react";
 
-export default function Categories({ items, onClick }) {
+ const Categories = React.memo(function Categories({ items, onClick }) {
   const [state, setstate] = React.useState(null);
+
   const onSelectItem = (index) => {
     setstate(index);
+    onClick(index);
   };
 
   return (
@@ -28,7 +30,7 @@ export default function Categories({ items, onClick }) {
       </ul>
     </div>
   );
-}
+})
 
 // export default class Categories extends React.Component {
 //   state = {
@@ -60,3 +62,5 @@ export default function Categories({ items, onClick }) {
 //     );
 //   }
 // }
+
+export default Categories;

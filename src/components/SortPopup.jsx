@@ -1,14 +1,14 @@
 import React from "react";
 
-function SortPopup({ items }) {
+const SortPopup = React.memo(function SortPopup({ items }) {
   const [visiblePopup, setvisiblePopup] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState(0);
   const sortRef = React.useRef(null);
-  const activeLabel = items[activeItem].name
+  const activeLabel = items[activeItem].name;
 
   const onSelectItem = (index) => {
     setActiveItem(index);
-    setvisiblePopup(false)
+    setvisiblePopup(false);
   };
 
   const toggleVisiblePopup = () => {
@@ -17,7 +17,7 @@ function SortPopup({ items }) {
 
   const handleOutsideClick = (e) => {
     if (!e.path.includes(sortRef.current)) {
-    setvisiblePopup(false);
+      setvisiblePopup(false);
     }
   };
 
@@ -29,7 +29,7 @@ function SortPopup({ items }) {
     <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
-          className= {visiblePopup ? 'rotated' : ''}
+          className={visiblePopup ? "rotated" : ""}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -47,27 +47,28 @@ function SortPopup({ items }) {
       {visiblePopup && (
         <div className="sort__popup">
           <ul>
-          {items && items.map((item, index) => (
-            <li
-            onClick={() => onSelectItem(index)}
-            className={activeItem === index ? "active" : ""}
-            key={`${item.name}_${index}`}
-          >
-            {item.name}
-          </li>
-        ))}
+            {items &&
+              items.map((item, index) => (
+                <li
+                  onClick={() => onSelectItem(index)}
+                  className={activeItem === index ? "active" : ""}
+                  key={`${item.name}_${index}`}
+                >
+                  {item.name}
+                </li>
+              ))}
           </ul>
         </div>
       )}
       {/* <div className="sort__popup" hidden={!visiblePopup}>
-        <ul>
-          <li className="active">популярности</li>
-          <li>цене</li>
-          <li>алфавиту</li>
-        </ul>
-      </div> */}
+          <ul>
+            <li className="active">популярности</li>
+            <li>цене</li>
+            <li>алфавиту</li>
+          </ul>
+        </div> */}
     </div>
   );
-}
+});
 
 export default SortPopup;
