@@ -391,7 +391,7 @@ a {
 }
 
 .pizza-block:not(:nth-of-type(4n)) {
-  margin-right: 35px;
+  margin-right: 3.7%;
 }
 
 .pizza-block__image {
@@ -514,9 +514,9 @@ body {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .content__top {
@@ -538,7 +538,6 @@ body {
 
 .container--cart {
   max-width: 820px;
-  margin: 90px auto;
 }
 
 .container--cart .content__title {

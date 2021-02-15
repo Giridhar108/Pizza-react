@@ -1,26 +1,28 @@
 // import Button from "./Button";
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 // import { connect } from 'react-redux'
-import { /* useSelector, */ useDispatch } from "react-redux";
+// import { /* useSelector, */ useDispatch } from "react-redux";
 // import store from './redux/store'
 
 import { Route } from "react-router-dom";
 import { Header } from "./components";
 import { Home, Cart } from "./pages";
-import { fetchPizzas } from "./redux/action/pizzas";
+// import { fetchPizzas } from "./redux/action/pizzas";
 
 
 
 function App() {
   // const [pizzas, setPizzas] = React.useState([]);
-  const dispatch = useDispatch();
+
   /* const { items }= useSelector(({ pizzas }) => {
     return {
       items: pizzas.items,
     }
   }) */
 
+  /*
+  const dispatch = useDispatch();
   React.useEffect(() => {
     // fetchPizzas(dispatch)
     dispatch(fetchPizzas())
@@ -30,7 +32,7 @@ function App() {
     //     setPizzas(json.pizzas);
     //   });
   }, []);
-
+ */
   return (
     <div className="wrapper">
       <Header />
